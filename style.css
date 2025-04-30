@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+}
+
+canvas {
+    display: block;
+}
+
+#clickable-area {
+    position: absolute;
+    width: 50vh;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+#clickable-area rect {
+    opacity: 0
+}
+
+#settings-toggle {
+    position: absolute;
+    width: 10vw;
+    height: 5vh;
+    top: 1vh;
+    left: auto;
+    right: 1vh;
+    bottom: auto;
+    margin: auto;
+    cursor: pointer;
+}
+
+#settings-toggle svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#settings-toggle svg rect {
+    fill: #2A2A2A;
+}
+
+#settings-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #A0A0A0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: ocr-a-std, monospace;
+}
+
+#settings-panel {
+    position: absolute;
+    width: 30vw;
+    height: 94%;
+
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#tablet {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#inner-tablet {
+    margin: 5%;
+}
+
+#result-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.game {
+    border-style: dashed;
+    border-color: green;
+    border-width: 1px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    z-index: 2;
+    position: relative;
+    height: 2vh;
+}
+    .game p {
+        width: 50%;
+        height: 2vh;
+        vertical-align: middle;
+        margin: 0;
+        color: lime;
+        font-family: ocr-a-std, monospace;
+    }
+
+    .game svg {
+        vertical-align: middle;
+        width: 2vh;
+        height: 2vh;
+        border-style: solid;
+        border-color: green;
+        border-width: 1px;
+    }
+
+#result-screen-center {
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#result-screen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+#result-screen-logo {
+    height: auto !important;
+    width: 70% !important;
+    margin: 0 auto auto auto !important;
+}
+
+#button-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    z-index: 2;
+    position: relative;
+    height: 2vh;
+}
+
+.result-button {
+    vertical-align: middle;
+    width: 40%;
+    height: 5vh;
+    border-style: solid;
+    border-color: green;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.result-button svg {
+    width: 100%;
+    height: 100%;
+}
+
+.result-button p {
+    width: 100%;
+    height: 100%;
+    color: #A0A0A0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: ocr-a-std, monospace;
+}
+
+#remove-button {
+
+}
+
+#ignore-button {
+
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}

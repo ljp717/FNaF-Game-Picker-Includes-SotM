@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Marathon Game Picker</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script type="importmap">
+	{
+	  "imports": {
+		"three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.js",
+		"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.176.0/examples/jsm/"
+	  }
+	}
+</script>
+<script type="module" src="/main.js"></script>
+
+
+
+<div id="container">
+	<svg id="clickable-area">
+		<rect width="100%" height="100%" />
+	</svg>
+	
+	<div id="settings-toggle">
+		<svg>
+			<rect width="100%" height="100%" />
+		</svg>
+		
+		<div id="settings-text">SETTINGS</div>
+	</div>
+
+	<canvas id="three-canvas"></canvas>
+	
+	<div id="settings-panel">
+		<img src="public/tablet1.png" id="tablet"/>
+		<div id="inner-tablet" style="visibility: hidden">
+			<div class="game" style="visibility: hidden" id="game-template">
+				<p class="game-name">GAME NAME</p>
+				<svg>
+					<rect width="100%" height="100%" />
+				</svg>
+			</div>
+		</div>
+	</div>
+
+	<div id="result-screen" style="visibility: hidden">
+		<div id="result-screen-center">
+			<img src="public/gradient.png">
+			<img id="result-screen-logo">
+			
+			<div id="button-container">
+				<div class="result-button" id="remove-button">
+					<svg>
+						<rect width="100%" height="100%" />
+					</svg>
+					
+					<p>REMOVE</p>
+				</div>
+				
+
+				<div class="result-button" id="ignore-button">
+					<svg>
+						<rect width="100%" height="100%" />
+					</svg>
+					
+					<p>KEEP</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
