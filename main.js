@@ -192,7 +192,7 @@ loader.load("public/security_breach_prize_box.glb", (glb) => {
 camera.position.y = 100;
 camera.position.z = 300;
 
-var mouseDown = 0;
+var mouseDown = false;
 
 const clickContainer = document.getElementById("clickable-area");
 var windAmount = 0;
@@ -200,9 +200,14 @@ var openAmount = 300;
 var canWind = true;
 var windAudio;
 clickContainer.addEventListener("pointerdown", (event) => {
-    ++mouseDown;
+    mouseDown = true;
 
     if (canWind && windAnim && !tabletOpen) {
+
+        if (windAudio) {
+            windAudio.pause();
+        }
+
         windAudio = new Audio(getRandomWindNoise());
         windAudio.volume = 0.5;
         windAudio.play();
@@ -211,11 +216,20 @@ clickContainer.addEventListener("pointerdown", (event) => {
         windAnim.play();
 
         openAmount = getRandomInt(100, 300);
+
+        // pick a random game
+        currentGameIndex = getRandomInt(0, gameNames.length - 1);
+
+        while (!gameInPool[currentGameIndex]) {
+            currentGameIndex = getRandomInt(0, gameNames.length - 1);
+        }
+
+        document.getElementById('result-screen-logo').src = "public/" + gameLogos[currentGameIndex];
     }
 });
 
 clickContainer.addEventListener("pointerup", (event) => {
-    --mouseDown;
+    mouseDown = false;
     windAmount = 0;
 
     if (canWind) {
@@ -252,7 +266,7 @@ function buttonPressed(remove) {
 
     canWind = true;
     windAmount = 0;
-    mouseDown = 0;
+    mouseDown = false;
     windAnim.timeScale = 2;
     windAnim.reset();
     windAnim.stop();
@@ -272,7 +286,7 @@ function animate() {
 
     // update wind timer
     if (windAnim && canWind) {
-        if (mouseDown == 1) {
+        if (mouseDown) {
             windAmount++;
         } else {
             windAmount = 0;
@@ -297,14 +311,6 @@ function animate() {
         windAnim.time = 4.5;
         windAnim.timeScale = 40;
 
-        // pick a random game
-        currentGameIndex = getRandomInt(0, gameNames.length - 1);
-
-        while (!gameInPool[currentGameIndex]) {
-            currentGameIndex = getRandomInt(0, gameNames.length - 1);
-        }
-
-        document.getElementById('result-screen-logo').src = "public/" + gameLogos[currentGameIndex];
         document.getElementById('result-screen').style.visibility = "visible";
     }
 
