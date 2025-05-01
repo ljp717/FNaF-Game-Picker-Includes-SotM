@@ -241,8 +241,13 @@ clickContainer.addEventListener("pointerup", (event) => {
 
     if (canWind) {
         // we're still winding rn
-        windAudio.pause();
-        windAnim.stop();
+        if (windAudio) {
+            windAudio.pause();
+        }
+
+        if (windAnim) {
+            windAnim.stop();
+        }
     }
 });
 
