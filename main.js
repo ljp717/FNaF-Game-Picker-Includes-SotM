@@ -345,7 +345,7 @@ function animate() {
 
         // go to box open part of animation
         windAnim.time = 4.5;
-        windAnim.timeScale = 40;
+        windAnim.timeScale = 15;
 
         document.getElementById('result-screen').style.visibility = "visible";
 
