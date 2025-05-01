@@ -25,10 +25,8 @@ canvas {
     position: absolute;
     width: 50vh;
     height: 50vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 32.5vh;
+    left: calc(50vw - 22vh);
     margin: auto;
     cursor: pointer;
 }
