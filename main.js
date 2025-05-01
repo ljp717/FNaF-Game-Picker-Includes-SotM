@@ -231,7 +231,7 @@ clickContainer.addEventListener("pointerdown", (event) => {
         windAnim.time = 0;
         windAnim.play();
 
-        openAmount = getRandomInt(100, 300);
+        openAmount = getRandomFloat(2, 5);
     }
 });
 
@@ -281,6 +281,10 @@ var keepButton = document.getElementById('ignore-button');
 removeButton.onclick = function (event) { buttonPressed(true); };
 keepButton.onclick = function (event) { buttonPressed(false); };
 
+for (var i = 1; i < 12; i++) {
+    preloadImage('public/tablet' + i + '.png');
+}
+
 var currentGameIndex;
 function buttonPressed(remove) {
     if (remove) {
@@ -314,7 +318,7 @@ function animate() {
     // update wind timer
     if (windAnim && canWind) {
         if (mouseDown) {
-            windAmount++;
+            windAmount += delta;
         } else {
             windAmount = 0;
         }
@@ -378,6 +382,10 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getRandomFloat(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 function toggleTabletOpen() {
     tabletOpen = !tabletOpen;
 
@@ -388,4 +396,10 @@ function toggleTabletOpen() {
     {
         new Audio('public/close.ogg').play();
     }
+}
+
+function preloadImage(url)
+{
+    var img = new Image();
+    img.src=url;
 }
