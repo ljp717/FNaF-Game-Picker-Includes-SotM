@@ -109,7 +109,7 @@ canvas {
     height: 2vh;
 }
     .game p {
-        width: 50%;
+        width: 100%;
         height: 2vh;
         vertical-align: middle;
         margin: 0;
@@ -186,6 +186,7 @@ canvas {
     color: #ffffff;
     text-shadow: .1em 0 BLACK, 0 -.1em BLACK, -.1em 0 BLACK, 0 .1em BLACK, .1em .1em BLACK, -.1em .1em BLACK, .1em -.1em BLACK, -.1em -.1em BLACK;
     margin-bottom: .5em;
+    text-align: center;
 }
 
 .result-button {
