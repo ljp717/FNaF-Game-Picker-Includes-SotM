@@ -247,10 +247,26 @@ var innerTablet = document.getElementById('inner-tablet');
 gameNames.forEach((val) => {
     var template = document.getElementById("game-template");
     var clone = template.cloneNode(true);
-    clone.removeAttribute("id");
+    clone.id = val;
     innerTablet.appendChild(clone);
     clone.style.visibility = "inherit";
     clone.getElementsByClassName("game-name")[0].innerText = val;
+
+    var checkbox = clone.getElementsByClassName("game-checkbox")[0];
+
+    checkbox.onclick = function(event) {
+
+        var gameIndex = gameNames.indexOf(val);
+
+        var isActive = gameInPool[gameIndex];
+        gameInPool[gameIndex] = !isActive;
+
+        if (isActive) {
+            checkbox.src = "public/checkbox-off.png";
+        } else {
+            checkbox.src = "public/checkbox-on.png";
+        }
+    };
 });
 
 var removeButton = document.getElementById('remove-button');
@@ -263,6 +279,10 @@ var currentGameIndex;
 function buttonPressed(remove) {
     if (remove) {
         gameInPool[currentGameIndex] = false;
+
+        var game = document.getElementById(gameNames[currentGameIndex]);
+        var checkbox = game.getElementsByClassName("game-checkbox")[0];
+        checkbox.src = "public/checkbox-off.png";
     }
 
     canWind = true;

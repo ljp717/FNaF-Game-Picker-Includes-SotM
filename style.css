@@ -131,14 +131,12 @@ canvas {
         font-family: ocr-a-std, monospace;
     }
 
-    .game svg {
+    .game-checkbox {
         vertical-align: middle;
 		flex: 0 0 2vh;
         width: 2vh;
         height: 2vh;
-        border-style: solid;
-        border-color: green;
-        border-width: 1px;
+        cursor: pointer;
     }
 
 #result-screen-center {
