@@ -104,6 +104,14 @@ canvas {
 	overflow: auto;
 }
 
+#ascii-art {
+    position: relative;
+    width: 30%;
+    height: auto;
+    float: right;
+    margin: 5%;
+}
+
 #result-screen {
     position: absolute;
     width: 100%;
