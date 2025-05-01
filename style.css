@@ -158,6 +158,11 @@ canvas {
 #result-screen-logo {
     height: auto !important;
     width: 70% !important;
+	margin-bottom: 2rem;
+	max-height: 300px;
+	min-height: 200px;
+    object-fit: contain;
+    object-position: center;
     /* margin: 0 auto auto auto !important; */
 }
 
@@ -169,6 +174,18 @@ canvas {
     /* z-index: 2; */
     position: relative;
     /* height: 2vh; */
+}
+
+#result-screen-title {
+	font-family: 'Trebuchet MS', sans-serif;
+    font-size: 3rem;
+    line-height: 1.2em;
+    letter-spacing: .1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: .1em 0 BLACK, 0 -.1em BLACK, -.1em 0 BLACK, 0 .1em BLACK, .1em .1em BLACK, -.1em .1em BLACK, .1em -.1em BLACK, -.1em -.1em BLACK;
+    margin-bottom: .5em;
 }
 
 .result-button {

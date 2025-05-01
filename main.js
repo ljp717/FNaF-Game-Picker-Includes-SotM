@@ -29,30 +29,30 @@ const gameNames = [
 ];
 
 const gameLogos = [
-    "Five_Nights_at_Freddy's.svg.png",
-    "405e0946bce7823f0d02492547b02fe8.png",
-    "FNAF3troll.webp",
-    "FNAF3.webp",
-    "3ec1bf0f2f0d13b27cf4040f9cc64899.png",
-    "fnafworldtroll.png",
-    "c3d8ddeb02660e1a4a5fcac49fbf3bd3.png",
-    "fnafworlddlc.png",
-    "sltroll.webp",
-    "FNAF_SL_LOGO.webp",
-    "slcustomnight.webp",
-    "FruitPunchClown.webp",
-    "ucntroll.png",
-    "UltimateCustomNight_Logo.png",
-    "HelpWantedLogo.webp",
-    "dreadbear.webp",
-    "Freddy_in_Space_2.webp",
-    "41c4601149dbd30948a810b8a7843284.png",
-    "SBLogo_LogoWithText.webp",
-    "Ruin_logo.webp",
-    "fis3.webp",
-    "HelpWanted2Logo.webp",
-    "FiveNightsAtFreddys_IntoThePit_Logo.png",
-    "FLaP_logo.webp"
+    "game-thumbnails/001-fnaf-1.png",
+    "game-thumbnails/002-fnaf-2.png",
+    "game-thumbnails/003-fnaf-3.png",
+    "game-thumbnails/004-fnaf-3-troll.png",
+    "game-thumbnails/005-fnaf-4.png",
+    "game-thumbnails/006-fnaf-world-troll.png",
+    "game-thumbnails/007-fnaf-world.png",
+    "game-thumbnails/008-fnaf-world-dlc.png",
+    "game-thumbnails/009-sister-location-troll.png",
+    "game-thumbnails/010-sister-location.png",
+    "game-thumbnails/011-sister-location-custom-night.png",
+    "game-thumbnails/012-pizza-sim.png",
+    "game-thumbnails/013-ucn-troll.png",
+    "game-thumbnails/014-ucn.png",
+    "game-thumbnails/015-help-wanted.png",
+    "game-thumbnails/016-dreadbear.png",
+    "game-thumbnails/017-freddy-in-space-2.png",
+    "game-thumbnails/018-furys-rage.png",
+    "game-thumbnails/019-security-breach.png",
+    "game-thumbnails/020-ruin.png",
+    "game-thumbnails/021-freddy-in-space-3.png",
+    "game-thumbnails/022-help-wanted-2.png",
+    "game-thumbnails/023-into-the-pit.png",
+    "game-thumbnails/024-five-laps-at-freddys.png"
 ];
 
 var gameInPool = Array(gameNames.length).fill(true);
@@ -225,6 +225,7 @@ clickContainer.addEventListener("pointerdown", (event) => {
         }
 
         document.getElementById('result-screen-logo').src = "public/" + gameLogos[currentGameIndex];
+        document.getElementById('result-screen-title').innerText = gameNames[currentGameIndex];
     }
 });
 
