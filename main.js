@@ -204,6 +204,22 @@ clickContainer.addEventListener("pointerdown", (event) => {
 
     if (canWind && windAnim && !tabletOpen) {
 
+        // pick a random game
+        currentGameIndex = getRandomInt(0, gameNames.length - 1);
+
+        var availableGames = gameInPool.filter(el => el == true).length;
+
+        if (availableGames == 0) {
+            return;
+        }
+
+        while (!gameInPool[currentGameIndex]) {
+            currentGameIndex = getRandomInt(0, gameNames.length - 1);
+        }
+
+        document.getElementById('result-screen-logo').src = "public/" + gameLogos[currentGameIndex];
+        document.getElementById('result-screen-title').innerText = gameNames[currentGameIndex];
+
         if (windAudio) {
             windAudio.pause();
         }
@@ -216,16 +232,6 @@ clickContainer.addEventListener("pointerdown", (event) => {
         windAnim.play();
 
         openAmount = getRandomInt(100, 300);
-
-        // pick a random game
-        currentGameIndex = getRandomInt(0, gameNames.length - 1);
-
-        while (!gameInPool[currentGameIndex]) {
-            currentGameIndex = getRandomInt(0, gameNames.length - 1);
-        }
-
-        document.getElementById('result-screen-logo').src = "public/" + gameLogos[currentGameIndex];
-        document.getElementById('result-screen-title').innerText = gameNames[currentGameIndex];
     }
 });
 
