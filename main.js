@@ -343,6 +343,13 @@ function animate() {
         windAnim.timeScale = 40;
 
         document.getElementById('result-screen').style.visibility = "visible";
+
+        confetti({
+            particleCount: 200,
+            spread: 90,
+            origin: { y: 1 },
+            startVelocity: 75
+        });
     }
 
     var tablet = document.getElementById('tablet');
