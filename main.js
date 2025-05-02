@@ -181,7 +181,7 @@ createGiftBox(-300, 57, -120, 56, false);
 createGiftBox(120, 57, -170, -23, false);
 
 function createGiftBox(x, y, z, rot, isMain) {
-    loader.load("public/security_breach_prize_box.glb", (glb) => {
+    loader.load("public/lidia.glb", (glb) => {
         var fbx = glb.scene;
         fbx.scale.setScalar(1000);
         fbx.position.set(x, y, z);
@@ -305,6 +305,14 @@ keepButton.onclick = function (event) { buttonPressed(false); };
 for (var i = 1; i < 12; i++) {
     preloadImage('public/tablet' + i + '.png');
 }
+
+for (var i = 1; i < 9; i++) {
+    preloadAudio('public/wind' + i + '.mp3');
+}
+
+preloadAudio('public/open.mp3');
+preloadAudio('public/open.ogg');
+preloadAudio('public/close.ogg');
 
 var currentGameIndex;
 function buttonPressed(remove) {
@@ -435,4 +443,8 @@ function preloadImage(url)
 {
     var img = new Image();
     img.src=url;
+}
+
+function preloadAudio(url) {
+    var audio = new Audio(url);
 }
