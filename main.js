@@ -123,10 +123,11 @@ spotLightFour.target = newTargetFour;
 scene.add(newTargetFour);
 scene.add(spotLightFour);
 
-/*const spotLightFive = new THREE.SpotLight(0x00ffff, 200000);
+const spotLightFive = new THREE.SpotLight(0xff0000, 0);
 spotLightFive.position.set(0, 600, 0);
-spotLightFive.angle = Math.PI / 16;
+spotLightFive.angle = Math.PI / 8;
 spotLightFive.penumbra = 1;
+spotLightFive.castShadow = true;
 spotLightFive.shadow.mapSize.width = 1024;
 spotLightFive.shadow.mapSize.height = 1024;
 spotLightFive.shadow.camera.near = 1;
@@ -135,7 +136,7 @@ var newTargetFive = new THREE.Object3D();
 newTargetFive.position.set(0, 0, 0);
 spotLightFive.target = newTargetFive;
 scene.add(newTargetFive);
-scene.add(spotLightFive);*/
+scene.add(spotLightFive);
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -170,26 +171,41 @@ var mixer;
 
 var windAnim = undefined;
 
-loader.load("public/security_breach_prize_box.glb", (glb) => {
-    var fbx = glb.scene;
-    fbx.scale.setScalar(1000);
-    fbx.position.set(0, 57, 0);
+createGiftBox(0, 57, 0, 0, true);
+createGiftBox(200, 57, -100, 45, false);
+createGiftBox(-180, 57, -80, 27, false);
+createGiftBox(-20, 57, -120, -12, false);
+createGiftBox(-20, 172, -120, 67, false);
 
-    fbx.traverse(function(object) {
-        object.castShadow = true
-        object.receiveShadow = true
+createGiftBox(-300, 57, -120, 56, false);
+createGiftBox(120, 57, -170, -23, false);
+
+function createGiftBox(x, y, z, rot, isMain) {
+    loader.load("public/security_breach_prize_box.glb", (glb) => {
+        var fbx = glb.scene;
+        fbx.scale.setScalar(1000);
+        fbx.position.set(x, y, z);
+        //fbx.setRotationFromAxisAngle((0, 1, 0), rot);
+        fbx.rotateY(rot * 0.0174533);
+
+        fbx.traverse(function (object) {
+            object.castShadow = true;
+            object.receiveShadow = true;
+        });
+
+        if (isMain) {
+            mixer = new THREE.AnimationMixer(glb.scene);
+            windAnim = mixer.clipAction(glb.animations[0]);
+            windAnim.loop = THREE.LoopOnce;
+            windAnim.timeScale = 2;
+            windAnim.clampWhenFinished = true;
+        }
+
+        scene.add(fbx);
     });
+}
 
-    mixer = new THREE.AnimationMixer(glb.scene);
-    windAnim = mixer.clipAction(glb.animations[0]);
-    windAnim.loop = THREE.LoopOnce;
-    windAnim.timeScale = 2;
-    windAnim.clampWhenFinished = true;
-
-    scene.add(fbx);
-});
-
-camera.position.y = 100;
+camera.position.y = 110;
 camera.position.z = 300;
 
 var mouseDown = false;
@@ -231,7 +247,7 @@ clickContainer.addEventListener("pointerdown", (event) => {
         windAnim.time = 0;
         windAnim.play();
 
-        openAmount = getRandomFloat(2, 5);
+        openAmount = getRandomFloat(3, 5);
     }
 });
 
@@ -333,6 +349,11 @@ function animate() {
         }
     }
 
+    camera.position.z = 300 - windAmount * 20;
+    spotLightFive.intensity = windAmount * 500000;
+    camera.fov = 75 + windAmount * 4;
+    camera.updateProjectionMatrix();
+
     if (windAmount >= openAmount) {
         // open box
         canWind = false;
@@ -358,19 +379,19 @@ function animate() {
     }
 
     var tablet = document.getElementById('tablet');
-    var image = 'public/tablet' + Math.floor(tabletImageIndex) + '.png';
+    var image = 'public/tablet' + Math.floor(Math.min(Math.max(tabletImageIndex, 1), 11)) + '.png';
     tablet.src = image;
 
     if (!tabletOpen && tabletImageIndex > 1) {
-        tabletImageIndex -= 0.5;
+        tabletImageIndex -= delta * 30;
     }
 
     if (tabletOpen && tabletImageIndex < 11) {
-        tabletImageIndex += 0.5;
+        tabletImageIndex += delta * 30;
     }
 
     var innerTablet = document.getElementById('inner-tablet');
-    if (tabletImageIndex == 11) {
+    if (tabletImageIndex >= 11) {
         innerTablet.style.visibility = "visible";
     } else {
         innerTablet.style.visibility = "hidden";
