@@ -26,6 +26,7 @@ const gameNames = [
     "Help Wanted 2",
     "Into The Pit",
     "Five Laps at Freddy's"
+    "Secret Of The Mimic"
 ];
 
 const gameLogos = [
