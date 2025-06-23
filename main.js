@@ -54,6 +54,7 @@ const gameLogos = [
     "game-thumbnails/022-help-wanted-2.png",
     "game-thumbnails/023-into-the-pit.png",
     "game-thumbnails/024-five-laps-at-freddys.png"
+    "game-thumbnails/SecretoftheMimic_Logo.png"
 ];
 
 var gameInPool = Array(gameNames.length).fill(true);
